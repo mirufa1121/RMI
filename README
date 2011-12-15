@@ -1,0 +1,43 @@
+In order for us to really understand how RMI works, our professor created this 
+group assignment. We had to write every part of an RMI implementation by hand,
+including all of the socket code that is usually generated automatically.
+
+File Descriptions:
+
+EchoService - The remote service, written by my teammate
+
+EchoService_stub - The client side of the remote service, written by my teammate
+
+EchoService_skeleton - Determines which method is being called by the client,
+					   my teammate wrote the invocation of the echoTestObject
+					   methods.
+					   
+Naming - The remote registry
+
+Naming_stub - The client side of the remote registry
+
+Naming_skeleton - Determines whether the client is doing a bind or a lookup
+
+Dispatcher - Listens on a port for method calls, determines which service is 
+			 being called on and then retrieves the skeleton from a map. Then
+			 it calls the invoke method of the skeleton.
+			 
+ClientCommunication - Does the actual socket communication, written by my 
+					  teammate
+					  
+Endpoint - Simple wrapper class to hold a host and port, written by my teammate
+
+UnicastRemoteObject - Makes a service accessible from a remote location
+
+Skeleton - Base class for the skeletons
+
+RMITable and RMITableEntry - Provided to us by the professor to store skeletons
+							 and remote services
+							 
+Drivers - These hold the main function to run their respective purposes
+
+To run:
+	- Run make to create the executables
+	- ./Naming.exe <registry-node-name> <registry-port>
+	- ./Server.exe <registry-node-name> <registry-port> <server-node-name>
+	- ./Client.exe <registry-node-name> <registry-port> <service-name>
